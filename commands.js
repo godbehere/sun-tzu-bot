@@ -40,6 +40,21 @@ const CHALLENGE_COMMAND = {
   type: 1,
 };
 
-const ALL_COMMANDS = [TEST_COMMAND, CHALLENGE_COMMAND];
+// Command containing options
+const IMAGINE_COMMAND = {
+  name: 'imagine',
+  description: 'AI Generated Image form prompt',
+  options: [
+    {
+      type: 3,
+      name: 'prompt',
+      description: 'Prompt for image generation',
+      required: true,
+    },
+  ],
+  type: 1,
+};
+
+const ALL_COMMANDS = [IMAGINE_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);

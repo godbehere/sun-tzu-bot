@@ -52,6 +52,25 @@ app.post('/interactions', async function (req, res) {
         },
       });
     }
+
+    if (name === 'imagine') {
+      fetch("https://openai.godbehere.org/imagine", {
+        method: "POST",
+        body: JSON.stringify({
+          prompt: req.body.data.options[0].value
+        }),
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8"
+        }
+      }).then((response) => {
+        return res.send({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            content: response,
+          },
+        })
+      });
+    }
   }
 });
 
